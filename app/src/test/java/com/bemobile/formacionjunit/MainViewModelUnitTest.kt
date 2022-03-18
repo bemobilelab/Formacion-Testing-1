@@ -1,9 +1,9 @@
 package com.bemobile.formacionjunit
 
+import com.bemobile.formacionjunit.model.Persona
 import com.bemobile.formacionjunit.ui.main.MainViewModel
 import org.junit.*
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
+import org.junit.Assert.*
 
 class MainViewModelUnitTest {
 
@@ -55,10 +55,29 @@ class MainViewModelUnitTest {
     @Test
     fun `Ejercicio 3 - Comprobar que creando un modelo tipo Persona, cambiando sus valores, comprobamos que al final se conservan `() {
         //GIVEN
+        val fakePerson = Persona(
+            "Pepe",
+            "Fernandez",
+            "Gutierrez",
+            "08-10-1976",
+            esDeveloper = true,
+            trabajaEnBemobile = false,
+            sabeHacerTests = false
+        )
 
         //WHEN
+        fakePerson.primerApellido = "Bolaño"
+        fakePerson.sabeHacerTests = true
+        if (fakePerson.sabeHacerTests) {
+            fakePerson.trabajaEnBemobile = true
+        }
 
         //THEN
+        assertNotNull(fakePerson)
+        assertTrue(fakePerson.nombre == "Pepe")
+        assertEquals(fakePerson.primerApellido, "Bolaño")
+        assertEquals(fakePerson.sabeHacerTests, true)
+        assertEquals(fakePerson.trabajaEnBemobile, true)
     }
 
     // TIP: Hay que crear una lista de cualquier modelo e intentar acceder a un índice superior al número de items
