@@ -85,10 +85,12 @@ class MainViewModelUnitTest {
     @Test
     fun `Ejercicio 4 - Comprobar que al obtener un objeto con un índice mayor al número de elementos en la array, devuelve una Excepcion `() {
         //GIVEN
+        val arrayOfWords = arrayListOf("exampleOne", "exampleTwo", "numberThree")
 
         //WHEN
 
         //THEN
+        assertThrows(IndexOutOfBoundsException::class.java) { arrayOfWords[4] }
     }
 
 }
