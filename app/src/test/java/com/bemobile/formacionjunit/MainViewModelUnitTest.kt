@@ -2,6 +2,7 @@ package com.bemobile.formacionjunit
 
 import com.bemobile.formacionjunit.ui.main.MainViewModel
 import org.junit.*
+import org.junit.Assert.assertTrue
 
 class MainViewModelUnitTest {
 
@@ -24,10 +25,13 @@ class MainViewModelUnitTest {
     @Test
     fun `Ejercicio 1 - Comprobar que el email tenga un formato correcto`() {
         //GIVEN
+        val fakeEmail = "test@email.com"
 
         //WHEN
+        val isEmailValid = viewModel.isEmailValid(fakeEmail)
 
         //THEN
+        assertTrue(isEmailValid)
     }
 
     // TIP: Para que el email tenga un formato incorrecto,
